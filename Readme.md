@@ -46,7 +46,14 @@
 5. Желательно, если при выполнении задания вы будете использовать
 docker-compose, SqlAalchemy, пользоваться аннотацией типов.
 
-## Запуск
+## Установка и запуск
+Клонируйте репозиторий и перейдите в рабочую директорию
+```
+git clone https://github.com/joerude/bewise-quiz-api-test
+cd bewise-quiz-api-test
+```
+
+Запустите docker-compose:
 ```
 docker-compose build
 docker-compose up
