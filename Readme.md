@@ -74,3 +74,5 @@ alembic, SQLAlchemy, Pydantic, PostgreSQL(psycopg2-binary)
 URL: `https://localhost/questions/bulk`
 <br>
 Request body: `{question_num: 100}`
+<br>
+Response: "Question Example"
