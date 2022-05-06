@@ -17,21 +17,20 @@ app.add_middleware(DBSessionMiddleware, db_url=os.environ["DATABASE_URL"])
 
 
 def is_question_id_exists(question: dict, model:
-                          ModelQuestion = ModelQuestion) -> bool:
+ModelQuestion = ModelQuestion) -> bool:
     return db.session.query(
         exists().where(model.question_id == question["id"])
     ).scalar()
 
 
-def get_last_id(model: ModelQuestion = ModelQuestion):
+def get_last_question(model: ModelQuestion = ModelQuestion) -> ModelQuestion:
     return db.session.query(model).order_by(model.id.desc()).first()
 
 
-import json
 @app.post("/questions/bulk")
 async def questions(item: Question_num):
+    last = get_last_question()
     question_num = item.question_num
-
     async with aiohttp.ClientSession() as session:
         async with session.get(
                 f"https://jservice.io/api/random?count={question_num}"
@@ -55,7 +54,8 @@ async def questions(item: Question_num):
                 )
                 db.session.add(db_question)
             db.session.commit()
-    return get_last_id()
+
+    return last.question if last else []
 
 
 if __name__ == "__main__":
