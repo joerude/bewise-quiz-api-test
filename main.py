@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi_sqlalchemy import DBSessionMiddleware, db
 from sqlalchemy.sql import exists
 
+from schema import Question_num
 from models import Question as ModelQuestion
 
 load_dotenv(".env")
@@ -26,8 +27,11 @@ def get_last_id(model: ModelQuestion = ModelQuestion):
     return db.session.query(model).order_by(model.id.desc()).first()
 
 
-@app.post("/questions")
-async def questions(question_num: int):
+import json
+@app.post("/questions/bulk")
+async def questions(item: Question_num):
+    question_num = item.question_num
+
     async with aiohttp.ClientSession() as session:
         async with session.get(
                 f"https://jservice.io/api/random?count={question_num}"

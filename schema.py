@@ -12,3 +12,7 @@ class Question(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class Question_num(BaseModel):
+    question_num: int
