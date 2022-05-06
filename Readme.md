@@ -69,7 +69,7 @@ alembic, SQLAlchemy, Pydantic, PostgreSQL(psycopg2-binary)
 <P>База данных: <b>PostgreSQL</b> - для хранения вопросов для викторин</p>
 
 
-Пример POST-запроса:
+**Пример POST-запроса:**
 <br>
 URL: `https://localhost/questions/bulk`
 <br>
