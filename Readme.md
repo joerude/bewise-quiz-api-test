@@ -71,4 +71,6 @@ alembic, SQLAlchemy, Pydantic, PostgreSQL(psycopg2-binary)
 
 Пример POST-запроса:
 <br>
-`"POST /questions/bulk"`
+URL: `https://localhost/questions/bulk`
+<br>
+Request body: `{question_num: 100}`
