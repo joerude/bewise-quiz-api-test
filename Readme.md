@@ -71,4 +71,4 @@ alembic, SQLAlchemy, Pydantic, PostgreSQL(psycopg2-binary)
 
 Пример POST-запроса:
 <br>
-`"POST /questions?question_num=100 HTTP/1.1" 200 OK`
+`"POST /questions/bulk"`
