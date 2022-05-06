@@ -60,7 +60,7 @@ docker-compose up
 ```
 
 ## Документация
-После запуска сервера, документаций доступна по адресу:  
+После запуска сервера документация доступна по адресу:  
 ```
 http://127.0.0.1:8000/docs
 http://127.0.0.1:8000/redoc
@@ -77,7 +77,6 @@ http://0.0.0.0:8000/redoc
 alembic, SQLAlchemy, Pydantic, PostgreSQL(psycopg2-binary)
 <P>База данных: <b>PostgreSQL</b> - для хранения вопросов для викторин</p>
 
-
 **Пример POST-запроса:**
 <br>
 URL: `https://localhost/questions/bulk`
@@ -85,3 +84,4 @@ URL: `https://localhost/questions/bulk`
 Request body: `{question_num: 100}`
 <br>
 Response: "Question Example"
+
