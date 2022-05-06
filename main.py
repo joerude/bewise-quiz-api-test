@@ -15,7 +15,8 @@ app = FastAPI()
 app.add_middleware(DBSessionMiddleware, db_url=os.environ["DATABASE_URL"])
 
 
-def is_question_id_exists(question: dict, model: ModelQuestion = ModelQuestion) -> bool:
+def is_question_id_exists(question: dict, model:
+                          ModelQuestion = ModelQuestion) -> bool:
     return db.session.query(
         exists().where(model.question_id == question["id"])
     ).scalar()
@@ -29,16 +30,17 @@ def get_last_id(model: ModelQuestion = ModelQuestion):
 async def questions(question_num: int):
     async with aiohttp.ClientSession() as session:
         async with session.get(
-            f"https://jservice.io/api/random?count={question_num}"
+                f"https://jservice.io/api/random?count={question_num}"
         ) as resp:
             api_data = await resp.json()
             for q in api_data:
                 while is_question_id_exists(q):
                     print(
-                        f'id {q["id"]} with question: "{q["question"]}" is already exists in database!'
+                        f'id {q["id"]} with question: "{q["question"]}" '
+                        f'is already exists in database!'
                     )
-                    async with session.get(f"https://jservice.io/api/random") as res:
-                        new_question = await res.json()
+                    async with session.get(f"https://jservice.io/api/random") as api_res:
+                        new_question = await api_res.json()
                         q = new_question[0]
 
                 db_question = ModelQuestion(

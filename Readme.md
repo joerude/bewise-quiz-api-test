@@ -46,25 +46,26 @@
 5. Желательно, если при выполнении задания вы будете использовать
 docker-compose, SqlAalchemy, пользоваться аннотацией типов.
 
-## Документация 
-
-```
-pip3 install poetry
-```
-
+## Запуск
 ```
 docker-compose build
 docker-compose up
 ```
 
+## Документация
+После запуска сервера доступна по адресу:  
+```
+0.0.0.0/docs
+0.0.0.0/redoc
+```
+
 ## Реализация
 
-```
-docker-compose run app alembic upgrade head
-docker-compose run app alembic revision --autogenerate -m "New Migration" 
+Для выполнения данной задачи был использован фреймворк FastAPI в комбинации с 
+alembic, SQLAlchemy, Pydantic, PostgreSQL(psycopg2-binary)
+<P>База данных: <b>PostgreSQL</b> - для хранения вопросов для викторин</p>
 
 
-ROM python
-WORKDIR /app ENV worker_count=8 ENV port=8000 ENV timeout=60 CMD ["/bin/sh" ,"-c", "pip install -r requirements.txt && pip install uvicorn[standard] && pip install gunicorn && gunicorn main:app -w $worker_count -k uvicorn.workers.UvicornWorker -b 0.0.0.0:$port --log-level debug --timeout $timeout"]
-
-```
+Пример POST-запроса:
+<br>
+`"POST /questions?question_num=100 HTTP/1.1" 200 OK`
