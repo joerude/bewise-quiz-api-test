@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "bewise_test"
+version = "0.1.0"
+description = ""
+authors = ["joerude <zh.akynov@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.75.2"
+uvicorn = "^0.17.6"
+FastAPI-SQLAlchemy = "^0.2.1"
+alembic = "^1.7.7"
+python-dotenv = "^0.20.0"
+psycopg2-binary = "^2.9.3"
+aiohttp = "^3.8.1"
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+mypy = "^0.950"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
